@@ -64,8 +64,11 @@ def train_gan(generator, discriminator, gan, data_generator, epochs=100, batch_s
 
             # Виведення втрат
             print(f"Партія {batch_count}, Втрата D для реальних: {d_loss_real[0]}, Втрата D для сгенерованих: {d_loss_fake[0]}, Втрата G: {g_loss[0]}")
-            if epoch % 5 == 0:
-                save_generated_images(generated_images, epoch)
+            if epoch % 1 == 0:  # Відображати зображення щоепохи
+                plt.figure(figsize=(8, 8))
+                plt.imshow(generated_images[0])  # Відобразити перше згенероване зображення
+                plt.axis('off')
+                plt.show()
 
 def save_generated_images(images, epoch, rows=4, columns=4):
     fig, axs = plt.subplots(rows, columns)
